@@ -1,0 +1,66 @@
+public class LinkedListTraverse{
+	Node head;
+	
+	static class Node
+	{
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data=d;
+		}
+	}
+	
+	public void addData(Node node)
+	{
+		if(head==null)
+			head=node;
+		else
+		{
+			Node temp=head;
+			while(temp.next!=null)
+				temp=temp.next;
+			temp.next=node;
+		}
+	}
+	
+	public void printData(Node node)
+	{
+		Node temp=node;
+		while(temp!=null)
+		{
+			System.out.print(temp.data+" ");
+			temp=temp.next;
+		}
+		System.out.println();
+	}
+
+	
+	public Node reverseList(Node current)
+	{
+		Node prev=null;
+		Node later;
+		while(current!=null)
+		{
+			later=current.next;
+			current.next=prev;
+			prev=current;
+			current=later;
+		}
+		return prev; 
+		
+	}
+	public static void main(String[] args)
+	{
+		LinkedListTraverse list=new LinkedListTraverse();
+		Node head=new Node(5);
+		list.addData(head);
+		list.addData(new Node(8));
+		list.addData(new Node(2));
+		list.addData(new Node(9));
+		list.printData(head);
+		Node rev=list.reverseList(head);
+		list.printData(rev); 
+	}
+}
+ 
